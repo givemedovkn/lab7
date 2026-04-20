@@ -19,8 +19,8 @@
 Создать список из чисел, содержащихся к файле. Если список пустой, то вернуть 0, иначе вернуть сумму минимального и максимального элементов списка, делённую на 2.
 
 ### Тестирование
-![test1]()
-![test11]()
+![test1](https://github.com/givemedovkn/lab7/blob/main/img/task1.png)
+![test11](https://github.com/givemedovkn/lab7/blob/main/img/task11.png)
 
 
 # Задание 2
@@ -51,8 +51,8 @@
 иначе итоговое произведение.
 
 ### Тестирование
-![test2]()
-![test21]()
+![test2](https://github.com/givemedovkn/lab7/blob/main/img/task2.png)
+![test21](https://github.com/givemedovkn/lab7/blob/main/img/task21.png)
 
 
 # Задание 3
@@ -72,9 +72,9 @@
 Если в строке не было найдено латинских символов, то строка записывается в текстовый файл для копирования.
 
 ### Тестирование
-![test3]()
-![test31]()
-![test32]()
+![test3](https://github.com/givemedovkn/lab7/blob/main/img/task3.png)
+![test31](https://github.com/givemedovkn/lab7/blob/main/img/task31.png)
+![test32](https://github.com/givemedovkn/lab7/blob/main/img/task32.png)
 
 
 # Задание 4
@@ -110,7 +110,7 @@
 
 
 ### Тестирование
-![test4]()
+![test4](https://github.com/givemedovkn/lab7/blob/main/img/task4.png)
 
 
 # Задание 5
