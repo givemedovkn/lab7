@@ -199,7 +199,7 @@
 
 
 ### Тестирование
-![test8]()
+![test8](https://github.com/givemedovkn/lab7/blob/main/img/task8.png)
 
 
 # Задание 9
