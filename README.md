@@ -181,7 +181,7 @@
 
 
 ### Тестирование
-![test7]()
+![test7](https://github.com/givemedovkn/lab7/blob/main/img/task7.png)
 
 
 # Задание 8
