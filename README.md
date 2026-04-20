@@ -163,7 +163,7 @@
 По окончании цикла возвращаем результирующий список.
 
 ### Тестирование
-![test6]()
+![test6](https://github.com/givemedovkn/lab7/blob/main/img/task6.png)
 
 
 # Задание 7
