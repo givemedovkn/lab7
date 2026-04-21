@@ -1,69 +1,13 @@
-﻿using System.Xml.Serialization;
-
-[Serializable]
-public struct Toy
-{
-    private string name;
-    private double price;
-    private int minAge;
-    private int maxAge;
-
-    public Toy(string name, double price, int minAge, int maxAge)
-    {
-        this.name = name;
-        this.price = price;
-        this.minAge = minAge;
-        this.maxAge = maxAge;
-    }
-    public string Name
-    {
-        get 
-        { 
-            return name; 
-        }
-        set 
-        { 
-            name = value; 
-        }
-    }
-    public double Price
-    {
-        get 
-        { 
-            return price; 
-        }
-        set 
-        { 
-            price = value; 
-        }
-    }
-    public int MinAge
-    {
-        get 
-        { 
-            return minAge; 
-        }
-        set 
-        { 
-            minAge = value; 
-        }
-    }
-    public int MaxAge
-    {
-        get 
-        { 
-            return maxAge; 
-        }
-        set 
-        { 
-            maxAge = value; 
-        }
-    }
-}
+using System.Xml.Serialization;
 internal class FileOperation
 {
     public static void FillRandNumOneStr(int count, string filePath)
     {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Файл не найден");
+            return;
+        }
         Random rnd = new Random();
         using (StreamWriter writer = new StreamWriter(filePath))
         {
@@ -77,6 +21,7 @@ internal class FileOperation
     {
         if (!File.Exists(filePath))
         {
+            Console.WriteLine("Файл не найден");
             return 0;
         }
         var numbers = File.ReadLines(filePath).Select(int.Parse).ToList();
@@ -91,6 +36,11 @@ internal class FileOperation
     }
     public static void FillRandNumSevStr(int countStr, string filePath)
     {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Файл не найден");
+            return;
+        }
         Random rnd = new Random();
         int countNum = 0;
         using (StreamWriter writer = new StreamWriter(filePath))
@@ -110,6 +60,7 @@ internal class FileOperation
     {
         if (!File.Exists(filePath))
         {
+            Console.WriteLine("Файл не найден");
             return 0;
         }
 
@@ -120,7 +71,7 @@ internal class FileOperation
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = line.Split(' ');
             foreach (string part in parts)
             {
                 if (int.TryParse(part, out int num))
@@ -138,16 +89,21 @@ internal class FileOperation
     }
     public static void CopyWithoutLatin(string file, string copyFile)
     {
+        if (!File.Exists(file)) 
+        {
+            Console.WriteLine("Файл не найден");
+            return; 
+        }
         string[] lines = File.ReadAllLines(file);
-
+        bool hasLatin = false;
         using (StreamWriter writer = new StreamWriter(copyFile))
         {
             foreach (string line in lines)
             {
-                bool hasLatin = false;
-                foreach (char c in line)
+                hasLatin = false;
+                foreach (char ch in line)
                 {
-                    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+                    if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
                     {
                         hasLatin = true;
                         break;
@@ -162,6 +118,11 @@ internal class FileOperation
     }
     public static void FillBinFile(int count, string filePath)
     {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Файл не найден");
+            return;
+        }
         Random rnd = new Random();
         using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
         {
@@ -175,16 +136,15 @@ internal class FileOperation
     {
         if (!File.Exists(filePath))
         {
+            Console.WriteLine("Файл не найден");
             return 0;
         } 
         int count = 0;
         using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
         {
-            // Пока не дошли до конца файла
             while (reader.BaseStream.Position < reader.BaseStream.Length)
             {
-                int num = reader.ReadInt32(); // Читаем целое число (4 байта)
-
+                int num = reader.ReadInt32();
                 if (IsSquarOdd(num))
                 {
                     count++;
@@ -206,6 +166,7 @@ internal class FileOperation
     {
         if (!File.Exists(filePath))
         {
+            Console.WriteLine("Файл не найден");
             return;
         }
         int num = 0;
@@ -221,14 +182,24 @@ internal class FileOperation
     }
     public static void FillToysXml(string filePath, List<Toy> toys)
     {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Файл не найден");
+            return;
+        }
         XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
         using (FileStream fs = new FileStream(filePath, FileMode.Create))
         {
             serializer.Serialize(fs, toys);
         }
     }
-    public static string GetExpensiveToyForToddlers(string filePath)
+    public static string ExpensiveToy(string filePath)
     {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Файл не найден");
+            return "";
+        }
         XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
         List<Toy> toysList;
 
